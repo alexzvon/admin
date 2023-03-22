@@ -1,0 +1,26 @@
+.select2-container--bootstrap .select2-results__option[aria-disabled=true] {
+  background-color: #EEEEEE;
+}
+
+
+.select2-container--bootstrap .select2-selection {
+  box-shadow: none !important;
+}
+
+.select2-container--bootstrap:not(.select2-container--focus) .select2-selection {
+  border-color: #dbe1e8 !important;
+}
+
+.select2-container--focus .select2-selection {
+  position: relative;
+  z-index: 2;
+  border-color: #1bbae1 !important;
+}
+
+.input-group-addon .select2:last-child {
+  margin-left: -1px;
+
+  & .select2-selection {
+    border-radius: 0 4px 4px 0;
+  }
+}

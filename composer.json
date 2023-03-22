@@ -1,0 +1,101 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.3",
+        "argentcrusade/flysystem-selectel": "^1.2",
+        "babenkoivan/scout-elasticsearch-driver": "^3.8",
+        "barryvdh/laravel-elfinder": "0.4.7",
+        "cybercog/laravel-love": "^5.1",
+        "darrylkuhn/dialect": "^1.0",
+        "doctrine/dbal": "^2.6",
+        "fideloper/proxy": "~4.0",
+        "kalnoy/nestedset": "^5.0",
+        "laravel/framework": "5.7.*",
+        "laravel/tinker": "~1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/glide-laravel": "^1.0",
+        "maatwebsite/excel": "^3.1",
+        "mossebo/core.candellabra.com": "dev-master",
+        "mossebo/grpc.candellabra.com": "*",
+        "predis/predis": "^1.1",
+        "prettus/l5-repository": "^2.6",
+        "pusher/pusher-php-server": "^4.1",
+        "retailcrm/api-client-php": "~5.0",
+        "sentry/sentry-laravel": "1.0.0",
+        "sirian/yandex-market-language-parser": "^3.0",
+        "spatie/laravel-medialibrary": "7.4.*",
+        "twbs/bootstrap": "^4.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "~1.0",
+        "nunomaduro/collision": "~2.0",
+        "phpunit/phpunit": "~7.0",
+        "symfony/thanks": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover",
+            "@php artisan config:clear",
+            "@php artisan cache:clear",
+            "@php artisan route:clear",
+            "@php artisan view:clear",
+            "@php artisan vendor:publish --provider=\"MosseboShopCore\\MosseboShopCoreServiceProvider\" --force"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true,
+            "composer/installers": true,
+            "symfony/thanks": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@gitlab.com:mossebo/core.candellabra.com.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@gitlab.com:mossebo/grpc.candellabra.com.git"
+        }
+    ]
+}

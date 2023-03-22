@@ -1,0 +1,22 @@
+.badges-select {
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: -8px 0 0 -8px;
+  }
+
+  &__item {
+    padding: 8px 0 0 8px;
+  }
+
+  &__button {
+    cursor: pointer;
+    opacity: .2;
+    transition: opacity .3s;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+}

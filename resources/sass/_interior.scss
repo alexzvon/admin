@@ -1,0 +1,197 @@
+.interior-preview {
+  user-select: none;
+  position: relative;
+
+  &__image {
+    pointer-events: none;
+  }
+
+  &__point {
+    position: absolute;
+    transform: translate3d(0,0,0);
+    border-radius: 50%;
+    z-index: 2;
+  }
+}
+
+@keyframes interior-point-animation {
+  0% {
+    opacity: 1;
+    transform: scale(0)
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2)
+  }
+}
+
+.interior-point {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,0,0, .1);
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    margin-top: -14px;
+    margin-left: -14px;
+    z-index: 1;
+    background-color: #fff;
+    opacity: .5;
+  }
+
+  &::after {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+    background-color: #fff;
+    z-index: 2;
+  }
+
+  &__center {
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-top: -5px;
+    background-color: #323F4C;
+    z-index: 3;
+
+    &::before {
+      width: 4px;
+      height: 4px;
+      margin-top: -2px;
+      margin-left: -2px;
+      background-color: #FCC600;
+      z-index: 3;
+    }
+  }
+
+  &::before,
+  &::after,
+  &__center,
+  &__center::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+  }
+
+  &:hover::before {
+    animation-name: interior-point-animation;
+    animation-duration: 1.4s;
+    animation-delay: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0;
+    transform: scale(2);
+    transition: 1.2s;
+  }
+
+  &__legend {
+    position: absolute;
+    padding: 32px;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &--left &__legend {
+    right: 100%;
+    margin-right: -32px;
+  }
+
+  &--right &__legend {
+    left: 100%;
+    margin-left: -32px;
+  }
+
+  &--top &__legend {
+    bottom: 100%;
+    margin-bottom: -32px;
+  }
+
+  &--bottom &__legend {
+    top: 100%;
+    margin-top: -32px;
+  }
+
+  &:hover &__legend {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.product-preview,
+.interior-point-loading {
+  position: relative;
+  min-height: 246px;
+  width: 144px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.14);
+  overflow: hidden;
+  padding: 16px;
+}
+
+.interior-point-loading::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FCC600;
+  animation-name: interior-point-animation;
+  animation-iteration-count: infinite;
+  animation-duration: 1.4s;
+  animation-timing-function: linear;
+}
+
+.product-preview {
+  color: #323F4C;
+
+  &__image-box {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+
+  &__name {
+    font-size: 12px / 16px;
+    margin-top: 16px;
+    max-height: 32px;
+    overflow: hidden;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-size: 14px / 18px;
+  }
+
+  &__button {
+    margin-top: 8px;
+  }
+
+  .button {
+    border-radius: 12px;
+    border: 1px solid #323F4C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px;
+    font-size: 10px / 14px;
+  }
+}
